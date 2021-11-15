@@ -47,6 +47,7 @@
     <Compile Include="Models\DetalleDespacho.cs" />
     <Compile Include="Models\DetalleFactura.cs" />
     <Compile Include="Models\Factura.cs" />
+    <Compile Include="Models\ICrudBase.cs" />
     <Compile Include="Models\PendienteDespacho.cs" />
     <Compile Include="Models\Producto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
