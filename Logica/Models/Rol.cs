@@ -8,5 +8,7 @@ namespace Logica
 {
     class Rol
     {
+
+
     }
 }
