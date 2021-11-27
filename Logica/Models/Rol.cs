@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logica.Models
 {
-    class Rol : ICrudBase
+    public class Rol : ICrudBase
     {
         // Atributos de la clase Rol
         public int IDRol { get; set; }

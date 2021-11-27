@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logica.Models
 {
-    class Factura : ICrudBase
+    public class Factura : ICrudBase
     {
         public bool Agregar()
         {

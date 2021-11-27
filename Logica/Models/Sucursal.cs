@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Logica.Models
 {
-    class Sucursal : ICrudBase
+    public class Sucursal : ICrudBase
     {
 
         // Atributos de la clase

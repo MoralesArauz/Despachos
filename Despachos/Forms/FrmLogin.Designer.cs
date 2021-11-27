@@ -96,6 +96,7 @@ namespace Despachos.Forms
             this.BtnIniciar.TabIndex = 4;
             this.BtnIniciar.Text = "Iniciar Sesión";
             this.BtnIniciar.UseVisualStyleBackColor = false;
+            this.BtnIniciar.Click += new System.EventHandler(this.BtnIniciar_Click);
             // 
             // BtnCancelar
             // 

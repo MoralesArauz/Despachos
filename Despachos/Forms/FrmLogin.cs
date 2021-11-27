@@ -31,5 +31,14 @@ namespace Despachos.Forms
         {
             TxtPassword.UseSystemPasswordChar = true;
         }
+
+        private void BtnIniciar_Click(object sender, EventArgs e)
+        {
+            // TODO: Validar las credenciales de ingreso
+
+            // Muestro el objeto global FrmMain y oculto el FrmLogin
+            Commons.ObjetosGlobales.MiFormPrincipal.Show();
+            this.Hide();
+        }
     }
 }

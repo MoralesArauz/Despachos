@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logica.Models
 {
-    class PendienteDespacho : ICrudBase
+    public class PendienteDespacho : ICrudBase
     {
 
         // Atributos de la clase

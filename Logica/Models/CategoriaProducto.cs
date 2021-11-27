@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logica.Models
 {
-    class CategoriaProducto : ICrudBase
+    public class CategoriaProducto : ICrudBase
     {
         // Atributos de la clase
         public int IDCategoria { get; set; }

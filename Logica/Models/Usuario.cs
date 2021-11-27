@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Logica.Models
 {
-    class Usuario : ICrudBase
+    public class Usuario : ICrudBase
     {
 
         // Atributos de la clase Usuario
@@ -56,7 +56,8 @@ namespace Logica.Models
         public DataTable Listar(bool soloActivos = true)
         {
             DataTable R = new DataTable();
-
+            Conexion MiCnn = new Conexion();
+            R = MiCnn.DMLSelect("SPUsuariosListar");
             return R;
         }
     }
