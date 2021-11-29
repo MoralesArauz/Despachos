@@ -30,22 +30,22 @@ namespace Despachos.Controls
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.DgvListaUsuarios = new System.Windows.Forms.DataGridView();
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.nuevoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.DgvListaUsuarios = new System.Windows.Forms.DataGridView();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCorreo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CRol = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaUsuarios)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -58,14 +58,13 @@ namespace Despachos.Controls
             this.panel1.Size = new System.Drawing.Size(825, 67);
             this.panel1.TabIndex = 1;
             // 
-            // panel2
+            // textBox1
             // 
-            this.panel2.Controls.Add(this.DgvListaUsuarios);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(0, 91);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(825, 405);
-            this.panel2.TabIndex = 2;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(153, 16);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(506, 29);
+            this.textBox1.TabIndex = 1;
             // 
             // label1
             // 
@@ -77,19 +76,45 @@ namespace Despachos.Controls
             this.label1.TabIndex = 0;
             this.label1.Text = "Buscar";
             // 
-            // textBox1
+            // panel2
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(153, 16);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(506, 29);
-            this.textBox1.TabIndex = 1;
+            this.panel2.Controls.Add(this.DgvListaUsuarios);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(0, 91);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(825, 405);
+            this.panel2.TabIndex = 2;
+            // 
+            // DgvListaUsuarios
+            // 
+            this.DgvListaUsuarios.AllowUserToAddRows = false;
+            this.DgvListaUsuarios.AllowUserToDeleteRows = false;
+            this.DgvListaUsuarios.AllowUserToResizeRows = false;
+            this.DgvListaUsuarios.BackgroundColor = System.Drawing.SystemColors.Control;
+            this.DgvListaUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvListaUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CID,
+            this.CNombre,
+            this.CCorreo,
+            this.CRol});
+            this.DgvListaUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.DgvListaUsuarios.Location = new System.Drawing.Point(0, 0);
+            this.DgvListaUsuarios.MultiSelect = false;
+            this.DgvListaUsuarios.Name = "DgvListaUsuarios";
+            this.DgvListaUsuarios.ReadOnly = true;
+            this.DgvListaUsuarios.RowHeadersVisible = false;
+            this.DgvListaUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DgvListaUsuarios.Size = new System.Drawing.Size(825, 405);
+            this.DgvListaUsuarios.TabIndex = 0;
+            this.DgvListaUsuarios.VirtualMode = true;
+            this.DgvListaUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvListaUsuarios_CellClick);
             // 
             // editarToolStripMenuItem
             // 
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
             this.editarToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
             this.editarToolStripMenuItem.Text = "Editar";
+            this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
             // 
             // rolesToolStripMenuItem
             // 
@@ -115,29 +140,6 @@ namespace Despachos.Controls
             this.nuevoToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.nuevoToolStripMenuItem.Text = "Nuevo";
             this.nuevoToolStripMenuItem.Click += new System.EventHandler(this.nuevoToolStripMenuItem_Click);
-            // 
-            // DgvListaUsuarios
-            // 
-            this.DgvListaUsuarios.AllowUserToAddRows = false;
-            this.DgvListaUsuarios.AllowUserToDeleteRows = false;
-            this.DgvListaUsuarios.AllowUserToResizeRows = false;
-            this.DgvListaUsuarios.BackgroundColor = System.Drawing.SystemColors.Control;
-            this.DgvListaUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DgvListaUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CID,
-            this.CNombre,
-            this.CCorreo,
-            this.CRol});
-            this.DgvListaUsuarios.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DgvListaUsuarios.Location = new System.Drawing.Point(0, 0);
-            this.DgvListaUsuarios.MultiSelect = false;
-            this.DgvListaUsuarios.Name = "DgvListaUsuarios";
-            this.DgvListaUsuarios.ReadOnly = true;
-            this.DgvListaUsuarios.RowHeadersVisible = false;
-            this.DgvListaUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListaUsuarios.Size = new System.Drawing.Size(825, 405);
-            this.DgvListaUsuarios.TabIndex = 0;
-            this.DgvListaUsuarios.VirtualMode = true;
             // 
             // CID
             // 
@@ -183,9 +185,9 @@ namespace Despachos.Controls
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.DgvListaUsuarios)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.DgvListaUsuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

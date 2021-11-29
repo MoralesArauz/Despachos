@@ -56,6 +56,9 @@ namespace Logica.Models
         public DataTable Listar(bool soloActivos = true)
         {
             DataTable R = new DataTable();
+            // SDUsuarioRolListar
+            Conexion MiCnn = new Conexion();
+            R = MiCnn.DMLSelect("SPUsuarioRolListar");
 
             return R;
         }

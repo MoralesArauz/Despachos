@@ -38,7 +38,7 @@ namespace Despachos.Forms
             this.CheckBoxActivo = new System.Windows.Forms.CheckBox();
             this.TxtNombre = new System.Windows.Forms.TextBox();
             this.TxtCorreo = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtContrasenia = new System.Windows.Forms.TextBox();
             this.BtnAtras = new System.Windows.Forms.Button();
             this.BtnGuargar = new System.Windows.Forms.Button();
             this.PBUsuario = new System.Windows.Forms.PictureBox();
@@ -91,20 +91,22 @@ namespace Despachos.Forms
             // 
             // CbRol
             // 
+            this.CbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.CbRol.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CbRol.FormattingEnabled = true;
             this.CbRol.Location = new System.Drawing.Point(129, 228);
-            this.CbRol.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.CbRol.Margin = new System.Windows.Forms.Padding(5);
             this.CbRol.Name = "CbRol";
             this.CbRol.Size = new System.Drawing.Size(199, 28);
             this.CbRol.TabIndex = 4;
+            this.CbRol.SelectedIndexChanged += new System.EventHandler(this.CbRol_SelectedIndexChanged);
             // 
             // CheckBoxActivo
             // 
             this.CheckBoxActivo.AutoSize = true;
             this.CheckBoxActivo.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CheckBoxActivo.Location = new System.Drawing.Point(18, 283);
-            this.CheckBoxActivo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.CheckBoxActivo.Margin = new System.Windows.Forms.Padding(5);
             this.CheckBoxActivo.Name = "CheckBoxActivo";
             this.CheckBoxActivo.Size = new System.Drawing.Size(77, 24);
             this.CheckBoxActivo.TabIndex = 5;
@@ -117,6 +119,7 @@ namespace Despachos.Forms
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(305, 26);
             this.TxtNombre.TabIndex = 6;
+            this.TxtNombre.Leave += new System.EventHandler(this.TxtNombre_Leave);
             // 
             // TxtCorreo
             // 
@@ -124,13 +127,15 @@ namespace Despachos.Forms
             this.TxtCorreo.Name = "TxtCorreo";
             this.TxtCorreo.Size = new System.Drawing.Size(307, 26);
             this.TxtCorreo.TabIndex = 7;
+            this.TxtCorreo.Leave += new System.EventHandler(this.TxtCorreo_Leave);
             // 
-            // textBox1
+            // TxtContrasenia
             // 
-            this.textBox1.Location = new System.Drawing.Point(129, 161);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(307, 26);
-            this.textBox1.TabIndex = 8;
+            this.TxtContrasenia.Location = new System.Drawing.Point(129, 161);
+            this.TxtContrasenia.Name = "TxtContrasenia";
+            this.TxtContrasenia.Size = new System.Drawing.Size(307, 26);
+            this.TxtContrasenia.TabIndex = 8;
+            this.TxtContrasenia.Leave += new System.EventHandler(this.TxtContrasenia_Leave);
             // 
             // BtnAtras
             // 
@@ -160,6 +165,7 @@ namespace Despachos.Forms
             this.BtnGuargar.TabIndex = 10;
             this.BtnGuargar.Text = "Guardar";
             this.BtnGuargar.UseVisualStyleBackColor = false;
+            this.BtnGuargar.Click += new System.EventHandler(this.BtnGuargar_Click);
             // 
             // PBUsuario
             // 
@@ -179,7 +185,7 @@ namespace Despachos.Forms
             this.Controls.Add(this.BtnAtras);
             this.Controls.Add(this.BtnGuargar);
             this.Controls.Add(this.PBUsuario);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.TxtContrasenia);
             this.Controls.Add(this.TxtCorreo);
             this.Controls.Add(this.TxtNombre);
             this.Controls.Add(this.CheckBoxActivo);
@@ -191,11 +197,12 @@ namespace Despachos.Forms
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.MaximizeBox = false;
             this.Name = "FrmUsuarioGestion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión de Usuarios";
+            this.Load += new System.EventHandler(this.FrmUsuarioGestion_Load);
             ((System.ComponentModel.ISupportInitialize)(this.PBUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -212,7 +219,7 @@ namespace Despachos.Forms
         private System.Windows.Forms.CheckBox CheckBoxActivo;
         private System.Windows.Forms.TextBox TxtNombre;
         private System.Windows.Forms.TextBox TxtCorreo;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtContrasenia;
         private System.Windows.Forms.PictureBox PBUsuario;
         private System.Windows.Forms.Button BtnGuargar;
         private System.Windows.Forms.Button BtnAtras;
