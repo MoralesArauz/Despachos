@@ -66,11 +66,11 @@ namespace Despachos.Forms
             this.LblUsuario.AutoSize = true;
             this.LblUsuario.BackColor = System.Drawing.Color.Transparent;
             this.LblUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LblUsuario.Location = new System.Drawing.Point(144, 13);
+            this.LblUsuario.Location = new System.Drawing.Point(100, 13);
             this.LblUsuario.Name = "LblUsuario";
-            this.LblUsuario.Size = new System.Drawing.Size(81, 24);
+            this.LblUsuario.Size = new System.Drawing.Size(163, 24);
             this.LblUsuario.TabIndex = 2;
-            this.LblUsuario.Text = "Usuario";
+            this.LblUsuario.Text = "Usuario / Correo";
             // 
             // LblPassword
             // 

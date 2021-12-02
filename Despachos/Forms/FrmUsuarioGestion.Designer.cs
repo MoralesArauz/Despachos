@@ -112,6 +112,7 @@ namespace Despachos.Forms
             this.CheckBoxActivo.TabIndex = 5;
             this.CheckBoxActivo.Text = "Activo";
             this.CheckBoxActivo.UseVisualStyleBackColor = true;
+            this.CheckBoxActivo.CheckedChanged += new System.EventHandler(this.CheckBoxActivo_CheckedChanged);
             // 
             // TxtNombre
             // 

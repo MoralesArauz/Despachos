@@ -45,12 +45,13 @@ namespace Despachos.Controls
 
         private void CtrlUsuarios_Load(object sender, EventArgs e)
         {
-            LlenarListaUsuarios();    
+            CheckBoxVerActivos.Checked = true;
+            LlenarListaUsuarios();
         }
 
-        public void LlenarListaUsuarios()
+        public void LlenarListaUsuarios(bool activos=true)
         {
-            ListaUsuarios = MiUsuarioLocal.Listar();
+            ListaUsuarios = MiUsuarioLocal.Listar(activos);
             DgvListaUsuarios.DataSource = ListaUsuarios;
             DgvListaUsuarios.ClearSelection();
         }
@@ -62,8 +63,6 @@ namespace Despachos.Controls
         // Modifica los valores del Usuario, incluso lo borra(inactiva)
         private void EditarUsuario()
         {
-            //string usuario = string.Format("ID: {0}\nNombre: {1}\nCorreo: {2}\nRol: {3}\nEstado:{4}", MiUsuarioLocal.IDUsuario, MiUsuarioLocal.Nombre, MiUsuarioLocal.Correo, MiUsuarioLocal.MiRol.IDRol,MiUsuarioLocal.Estado);
-            //MessageBox.Show(usuario, "Prueba", MessageBoxButtons.OK);
             // Si el formulario ya se ha abierto y se intenta abrir de nuevo, entonces se trae al frente
             // De lo contrario se muestra.
             if (Commons.ObjetosGlobales.FormUsuarioGestion.Visible)
@@ -95,6 +94,16 @@ namespace Despachos.Controls
                 // Aquí se cargan los atributos de MiUsuarioLocal
                 MiUsuarioLocal = MiUsuarioLocal.Consultar();
             }
+        }
+
+        private void DgvListaUsuarios_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            EditarUsuario();
+        }
+
+        private void CheckBoxVerActivos_Click(object sender, EventArgs e)
+        {
+            LlenarListaUsuarios(CheckBoxVerActivos.Checked);
         }
     }
 }

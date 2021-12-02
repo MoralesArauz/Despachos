@@ -46,6 +46,34 @@ namespace Logica.Models
             return R;
         }
 
+        public Usuario ValidarIngreso(string usuario, string password)
+        {
+            Usuario R = new Usuario();
+
+            Conexion MiCnn = new Conexion();
+
+            MiCnn.ListadoDeParametros.Add(new SqlParameter("@user", usuario));
+            MiCnn.ListadoDeParametros.Add(new SqlParameter("@pass", password));
+
+            DataTable DatosUsuario = new DataTable();
+            DatosUsuario = MiCnn.DMLSelect("SPUsuarioValidarIngreso");
+
+            if (DatosUsuario != null && DatosUsuario.Rows.Count == 1)
+            {
+                DataRow Fila = DatosUsuario.Rows[0];
+
+                R.IDUsuario = Convert.ToInt32(Fila["ID"]); ;
+                R.Nombre = Convert.ToString(Fila["Nombre"]);
+                
+                R.Correo = Convert.ToString(Fila["Correo"]);
+                // Aquí hay un conflicto para poder editar la contraseña
+                R.Contrasenia = string.Empty;
+                //R.Contrasennia = Convert.ToString(Fila["Contrasennia"]);
+                R.MiRol.IDRol = Convert.ToInt32(Fila["IDRol"]);
+            }
+
+            return R;
+        }
 
         public Usuario Consultar()
         {
@@ -92,7 +120,20 @@ namespace Logica.Models
         public bool Editar()
         {
             bool R = false;
+            Conexion MiCnn = new Conexion();
+            MiCnn.ListadoDeParametros.Add(new SqlParameter("@ID", IDUsuario));
+            MiCnn.ListadoDeParametros.Add(new SqlParameter("@Nombre", Nombre));
+            MiCnn.ListadoDeParametros.Add(new SqlParameter("@Correo", Correo));
+            // La contraseña debe de encriptarse
+            MiCnn.ListadoDeParametros.Add(new SqlParameter("@Contrasenia", Contrasenia));
+            // Debemos enviar el valor del IDRol por medio de la composición
+            MiCnn.ListadoDeParametros.Add(new SqlParameter("@IDRol", MiRol.IDRol));
+            int resultado = MiCnn.DMLUpdateDeleteInsert("SPUsuarioEditar");
 
+            if (resultado > 0)
+            {
+                R = true;
+            }
             return R;
         }
 
@@ -100,13 +141,40 @@ namespace Logica.Models
         {
             bool R = false;
 
+            Conexion MiCnn = new Conexion();
+            MiCnn.ListadoDeParametros.Add(new SqlParameter("@ID", this.IDUsuario));
+
+            int retorno = MiCnn.DMLUpdateDeleteInsert("SPUsuarioEliminar");
+
+            if (retorno == 1)
+            {
+                R = true;
+            }
+
+            return R;
+        }
+        public bool Activar()
+        {
+            bool R = false;
+
+            Conexion MiCnn = new Conexion();
+            MiCnn.ListadoDeParametros.Add(new SqlParameter("@ID", this.IDUsuario));
+
+            int retorno = MiCnn.DMLUpdateDeleteInsert("SPUsuarioActivar");
+
+            if (retorno == 1)
+            {
+                R = true;
+            }
+
             return R;
         }
 
-        public DataTable Listar(bool soloActivos = true)
+        public DataTable Listar(bool VerActivos = true)
         {
             DataTable R = new DataTable();
             Conexion MiCnn = new Conexion();
+            MiCnn.ListadoDeParametros.Add(new SqlParameter("@VerActivos", VerActivos));
             R = MiCnn.DMLSelect("SPUsuariosListar");
             return R;
         }

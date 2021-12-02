@@ -35,10 +35,33 @@ namespace Despachos.Forms
         private void BtnIniciar_Click(object sender, EventArgs e)
         {
             // TODO: Validar las credenciales de ingreso
+            if (ValidarDatos())
+            {
 
-            // Muestro el objeto global FrmMain y oculto el FrmLogin
-            Commons.ObjetosGlobales.MiFormPrincipal.Show();
-            this.Hide();
+                Logica.Models.Usuario MiUsuarioValidado = new Logica.Models.Usuario();
+
+                MiUsuarioValidado = MiUsuarioValidado.ValidarIngreso(TxtUsuario.Text.Trim(), TxtPassword.Text.Trim());
+
+                if (MiUsuarioValidado != null && MiUsuarioValidado.IDUsuario > 0)
+                {
+                    Commons.ObjetosGlobales.MiUsuarioDeSistema = MiUsuarioValidado;
+                    // Muestro el objeto global del FrmMain
+                    Commons.ObjetosGlobales.MiFormPrincipal.Show();
+                    // Oculto (no destruyo) el formulario de login
+                    this.Hide();
+                }
+                else
+                {
+                    MessageBox.Show("Usuario o contraseña incorrectos", "Error de Validación", MessageBoxButtons.OK);
+                }
+            }
+              
+        }
+        private bool ValidarDatos()
+        {
+            return true;
         }
     }
+
+        
 }

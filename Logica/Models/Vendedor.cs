@@ -15,6 +15,7 @@ namespace Logica.Models
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public bool Activo { get; set; }
+        public Sucursal MiSucursal { get; set; }
 
 
 
@@ -50,7 +51,8 @@ namespace Logica.Models
         public DataTable Listar(bool soloActivos = true)
         {
             DataTable R = new DataTable();
-
+            Conexion MiCnn = new Conexion();
+            R = MiCnn.DMLSelect("SPVendedoresListar");
             return R;
         }
     }

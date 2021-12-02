@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -46,10 +47,23 @@ namespace Logica.Models
             return R;
         }
 
-        public DataTable Listar(bool soloActivos = true)
+        public DataTable Listar(bool VerActivos = true,string ciudad = "")
         {
             DataTable R = new DataTable();
+            Conexion MiCnn = new Conexion();
+            // Se agregan los parámetros necesarios del procedimiento almacenado.
+            MiCnn.ListadoDeParametros.Add(new SqlParameter("@VerActivos", VerActivos));
+            MiCnn.ListadoDeParametros.Add(new SqlParameter("@Ciudad", ciudad));
+ 
+            R = MiCnn.DMLSelect("SPClientesListar");
+            return R;
+        }
 
+        public DataTable ListarCiudades()
+        {
+            DataTable R = new DataTable();
+            Conexion MiCnn = new Conexion();
+            R = MiCnn.DMLSelect("SPClientesListarCiudades");
             return R;
         }
     }

@@ -18,6 +18,7 @@ namespace Despachos.Forms
         public Logica.Models.Usuario MiUsuarioLocal { get; set; }
         private Controls.CtrlUsuarios padre { get; set; }
         private bool UsuarioNuevo = true;
+        private bool CargaInicial = true;
 
         public FrmUsuarioGestion()
         {
@@ -34,7 +35,7 @@ namespace Despachos.Forms
             {
                 UsuarioNuevo = false;
                 MiUsuarioLocal = usuario;
-                MessageBox.Show("IDRol: " + MiUsuarioLocal.MiRol.IDRol, "Después de Abrir el FORM", MessageBoxButtons.OK);
+                //MessageBox.Show("IDRol: " + MiUsuarioLocal.MiRol.IDRol, "Después de Abrir el FORM", MessageBoxButtons.OK);
             }
         }
 
@@ -61,7 +62,7 @@ namespace Despachos.Forms
                         {
                             MessageBox.Show("El Usuario se agregó correctamente!", "Agregado", MessageBoxButtons.OK);
                             LimpiarFormulario();
-                            padre.LlenarListaUsuarios();
+                            padre.LlenarListaUsuarios(padre.CheckBoxVerActivos.Checked);
                         }
                         else
                         {
@@ -75,11 +76,29 @@ namespace Despachos.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Estás tratando de Editar", "Editando", MessageBoxButtons.OK);
+                    // El usuario ya existe por lo que se va a agregar
+                    if (MiUsuarioLocal.Editar())
+                    {
+                        MessageBox.Show("El usuario se editó correctamente", "Editado", MessageBoxButtons.OK);
+                        padre.LlenarListaUsuarios(padre.CheckBoxVerActivos.Checked);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ha ocurrido un error y el usuario no se editó", "Error", MessageBoxButtons.OK);
+                    }
+                    
+
                 }
                 
             }
             
+        }
+
+        private bool EditarUsuario()
+        {
+            bool R = false;
+
+            return R;
         }
 
         private void LlenarFormulario()
@@ -89,6 +108,8 @@ namespace Despachos.Forms
             CbRol.SelectedIndex = MiUsuarioLocal.MiRol.IDRol;
  
             CheckBoxActivo.Checked = MiUsuarioLocal.Estado;
+
+            CargaInicial = false;
         }
 
         private void LimpiarFormulario()
@@ -103,7 +124,7 @@ namespace Despachos.Forms
         {
             // Este código se ejecuta al mostrar el form en pantalla
             // Se llenará la información de los roles
-            CheckBoxActivo.Checked = true;
+            //CheckBoxActivo.Checked = true;
             CargarComboRoles();
             if (!UsuarioNuevo)
             {
@@ -201,5 +222,68 @@ namespace Despachos.Forms
 
             return R;
         }
+
+        private bool CambiarEstadoUsuario(bool activo)
+        {
+            bool R = false;
+            DialogResult resultado;
+            if (activo)
+            {
+                resultado = MessageBox.Show(string.Format("Está seguro que desea activar al usuario: {0}?",MiUsuarioLocal.Nombre),"Activando",MessageBoxButtons.YesNo);
+                if (resultado == DialogResult.Yes)
+                {
+                    //TODO: Activar al usuario
+                    MiUsuarioLocal.Activar();
+                    padre.LlenarListaUsuarios(padre.CheckBoxVerActivos.Checked);
+                    
+                }
+                else
+                {
+                    CargaInicial = true;
+                    CheckBoxActivo.Checked = false;
+                    CargaInicial = false;
+                }
+                
+            }
+            else
+            {
+                resultado = MessageBox.Show(string.Format("Está seguro que desea Inactivar al usuario: {0}?", MiUsuarioLocal.Nombre), "Inactivando", MessageBoxButtons.YesNo);
+                if (resultado == DialogResult.Yes)
+                {
+                    //TODO: Inactivar al usuario
+                    MiUsuarioLocal.Eliminar();
+                    padre.LlenarListaUsuarios();
+                }
+                else
+                {
+                    CargaInicial = true;
+                    CheckBoxActivo.Checked = true;
+                    CargaInicial = false;
+                }
+            }
+            return R;
+        }
+
+        private void CheckBoxActivo_CheckedChanged(object sender, EventArgs e)
+        {
+            // Verifica si el cambio se hizo después de la carga inicial, para así poder interpretar correctamente el evento,
+            // ya que al iniciar el form hay un cambio el el CheckBox, que se hace dependiendo del estado del usuario cargado.
+            if (!CargaInicial)
+            {
+                if (CheckBoxActivo.CheckState == 0)
+                {
+                    // Se acaba de quitar el check por lo que se quiere inactivar el usuario
+                    CambiarEstadoUsuario(false);
+                }
+                else
+                {
+                    // Se acaba de poner check por lo que se quiere activar el usuario
+                    CambiarEstadoUsuario(true);
+                }
+            }
+            
+        }
+
+        
     }
 }

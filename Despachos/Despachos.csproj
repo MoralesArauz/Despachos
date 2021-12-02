@@ -47,17 +47,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commons\ObjetosGlobales.cs" />
+    <Compile Include="Controls\CtrlClientes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CtrlClientes.Designer.cs">
+      <DependentUpon>CtrlClientes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CtrlFacturas.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CtrlFacturas.Designer.cs">
+      <DependentUpon>CtrlFacturas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CtrlProductos.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\CtrlProductos.Designer.cs">
+      <DependentUpon>CtrlProductos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\CtrlUsuarios.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Controls\CtrlUsuarios.Designer.cs">
       <DependentUpon>CtrlUsuarios.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\FrmClienteBuscar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Forms\FrmClienteBuscar.Designer.cs">
+      <DependentUpon>FrmClienteBuscar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FrmFacturaGestion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmFacturaGestion.Designer.cs">
+      <DependentUpon>FrmFacturaGestion.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmLogin.cs">
       <SubType>Form</SubType>
@@ -77,10 +101,31 @@
     <Compile Include="Forms\FrmUsuarioGestion.Designer.cs">
       <DependentUpon>FrmUsuarioGestion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmVendedorBuscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmVendedorBuscar.Designer.cs">
+      <DependentUpon>FrmVendedorBuscar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\CtrlClientes.resx">
+      <DependentUpon>CtrlClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CtrlFacturas.resx">
+      <DependentUpon>CtrlFacturas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\CtrlProductos.resx">
+      <DependentUpon>CtrlProductos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Controls\CtrlUsuarios.resx">
       <DependentUpon>CtrlUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmClienteBuscar.resx">
+      <DependentUpon>FrmClienteBuscar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmFacturaGestion.resx">
+      <DependentUpon>FrmFacturaGestion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -90,6 +135,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmUsuarioGestion.resx">
       <DependentUpon>FrmUsuarioGestion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmVendedorBuscar.resx">
+      <DependentUpon>FrmVendedorBuscar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -146,6 +194,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\flecha-hacia-atras.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\nuevo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

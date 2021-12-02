@@ -13,6 +13,10 @@ namespace Despachos.Commons
 
         public static Form FormUsuarioGestion = new Forms.FrmUsuarioGestion();
 
-        public static Logica.Models.Usuario MiUsuarioSistema = new Logica.Models.Usuario();
+        public static Logica.Models.Usuario MiUsuarioDeSistema = new Logica.Models.Usuario();
+
+        public static Forms.FrmFacturaGestion MiFormFactura = new Forms.FrmFacturaGestion();
+
+        //public static Forms.FrmClienteBuscar MiFormClienteBuscar = new Forms.FrmClienteBuscar();
     }
 }
