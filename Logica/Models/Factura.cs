@@ -71,5 +71,19 @@ namespace Logica.Models
 
             return R;
         }
+
+        public string ConsecutivoFactura(int IDVendedor)
+        {
+            string R = "";
+            if (IDVendedor > 0)
+            {
+                Conexion MiCnn = new Conexion();
+                MiCnn.ListadoDeParametros.Add(new SqlParameter("@IDVendedor", IDVendedor));
+                Object consecutivo = MiCnn.DMLConRetornoEscalar("SPFacturaConsecutivo");
+                R = consecutivo.ToString();
+            }
+
+            return R;
+        }
     }
 }

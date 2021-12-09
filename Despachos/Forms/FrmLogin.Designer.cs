@@ -39,6 +39,7 @@ namespace Despachos.Forms
             this.LinkRecuperarPass = new System.Windows.Forms.LinkLabel();
             this.LblEmpresa = new System.Windows.Forms.Label();
             this.PicShowPass = new System.Windows.Forms.PictureBox();
+            this.BtnIngresoDirecto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PicShowPass)).BeginInit();
             this.SuspendLayout();
             // 
@@ -149,6 +150,22 @@ namespace Despachos.Forms
             this.PicShowPass.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PicShowPass_MouseDown);
             this.PicShowPass.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PicShowPass_MouseUp);
             // 
+            // BtnIngresoDirecto
+            // 
+            this.BtnIngresoDirecto.BackColor = System.Drawing.Color.Blue;
+            this.BtnIngresoDirecto.FlatAppearance.BorderSize = 0;
+            this.BtnIngresoDirecto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnIngresoDirecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnIngresoDirecto.ForeColor = System.Drawing.Color.White;
+            this.BtnIngresoDirecto.Location = new System.Drawing.Point(253, 68);
+            this.BtnIngresoDirecto.Name = "BtnIngresoDirecto";
+            this.BtnIngresoDirecto.Size = new System.Drawing.Size(101, 27);
+            this.BtnIngresoDirecto.TabIndex = 9;
+            this.BtnIngresoDirecto.Text = "Atajo";
+            this.BtnIngresoDirecto.UseVisualStyleBackColor = false;
+            this.BtnIngresoDirecto.Visible = false;
+            this.BtnIngresoDirecto.Click += new System.EventHandler(this.BtnIngresoDirecto_Click);
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -157,6 +174,7 @@ namespace Despachos.Forms
             this.BackgroundImage = global::Despachos.Properties.Resources.backgroundLogin;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(391, 212);
+            this.Controls.Add(this.BtnIngresoDirecto);
             this.Controls.Add(this.PicShowPass);
             this.Controls.Add(this.LblEmpresa);
             this.Controls.Add(this.LinkRecuperarPass);
@@ -169,9 +187,12 @@ namespace Despachos.Forms
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLogin";
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLogin_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.PicShowPass)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -189,5 +210,6 @@ namespace Despachos.Forms
         private System.Windows.Forms.LinkLabel LinkRecuperarPass;
         private System.Windows.Forms.Label LblEmpresa;
         private System.Windows.Forms.PictureBox PicShowPass;
+        private System.Windows.Forms.Button BtnIngresoDirecto;
     }
 }

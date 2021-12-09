@@ -34,7 +34,7 @@ namespace Despachos.Controls
                 // Reinicia el formulario por si se ha cerrado anteriormente.
                 Commons.ObjetosGlobales.MiFormFactura = new Forms.FrmFacturaGestion();
 
-                Commons.ObjetosGlobales.MiFormFactura.ShowDialog();
+                Commons.ObjetosGlobales.MiFormFactura.Show();
             }
             LlenarListaFacturas();
         }

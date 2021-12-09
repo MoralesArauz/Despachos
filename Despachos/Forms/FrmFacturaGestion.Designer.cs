@@ -29,76 +29,96 @@ namespace Despachos.Forms
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmFacturaGestion));
             this.TxtCliente = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.LblPedido = new System.Windows.Forms.Label();
             this.LblCliente = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.BtnCancelar = new System.Windows.Forms.Button();
             this.BtnGuardar = new System.Windows.Forms.Button();
+            this.LblVendedor = new System.Windows.Forms.Label();
+            this.TxtVendedor = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.BtnAgregarLinea = new System.Windows.Forms.Button();
-            this.LblVendedor = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.TxtVendedor = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.TxtPrecio = new System.Windows.Forms.TextBox();
+            this.TxtCantidad = new System.Windows.Forms.TextBox();
+            this.TxtDescripcion = new System.Windows.Forms.TextBox();
+            this.TxtCodigoProducto = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.TxtObservaciones = new System.Windows.Forms.TextBox();
+            this.panel8 = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
-            this.TxtTotal = new System.Windows.Forms.TextBox();
-            this.TxtSubtotal = new System.Windows.Forms.TextBox();
+            this.TxtObservaciones = new System.Windows.Forms.TextBox();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.TxtImpuesto = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.TxtTotal = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.TxtSubtotal = new System.Windows.Forms.TextBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.DgvDetalleFactura = new System.Windows.Forms.DataGridView();
+            this.CCodigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CDescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.eliminarFilaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.eliminarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalleFactura)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // TxtCliente
             // 
-            this.TxtCliente.Location = new System.Drawing.Point(219, 40);
+            this.TxtCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCliente.Location = new System.Drawing.Point(22, 19);
             this.TxtCliente.Name = "TxtCliente";
-            this.TxtCliente.Size = new System.Drawing.Size(100, 20);
+            this.TxtCliente.Size = new System.Drawing.Size(38, 26);
             this.TxtCliente.TabIndex = 0;
             this.TxtCliente.DoubleClick += new System.EventHandler(this.TxtCliente_DoubleClick);
             // 
-            // label1
+            // LblPedido
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 39);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Pedido:";
+            this.LblPedido.AutoSize = true;
+            this.LblPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblPedido.ForeColor = System.Drawing.Color.SteelBlue;
+            this.LblPedido.Location = new System.Drawing.Point(29, 39);
+            this.LblPedido.Name = "LblPedido";
+            this.LblPedido.Size = new System.Drawing.Size(74, 20);
+            this.LblPedido.TabIndex = 1;
+            this.LblPedido.Text = "Pedido: ";
             // 
             // LblCliente
             // 
             this.LblCliente.AutoSize = true;
-            this.LblCliente.Location = new System.Drawing.Point(334, 43);
+            this.LblCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblCliente.Location = new System.Drawing.Point(66, 22);
             this.LblCliente.Name = "LblCliente";
-            this.LblCliente.Size = new System.Drawing.Size(39, 13);
+            this.LblCliente.Size = new System.Drawing.Size(75, 20);
             this.LblCliente.TabIndex = 2;
-            this.LblCliente.Text = "Cliente";
+            this.LblCliente.Text = "Cliente: ";
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.LblCliente);
-            this.panel1.Controls.Add(this.TxtCliente);
+            this.panel1.Controls.Add(this.LblVendedor);
+            this.panel1.Controls.Add(this.LblPedido);
+            this.panel1.Controls.Add(this.TxtVendedor);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
@@ -145,19 +165,38 @@ namespace Despachos.Forms
             this.BtnGuardar.UseVisualStyleBackColor = false;
             this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
+            // LblVendedor
+            // 
+            this.LblVendedor.AutoSize = true;
+            this.LblVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblVendedor.Location = new System.Drawing.Point(312, 42);
+            this.LblVendedor.Name = "LblVendedor";
+            this.LblVendedor.Size = new System.Drawing.Size(97, 20);
+            this.LblVendedor.TabIndex = 9;
+            this.LblVendedor.Text = "Vendedor: ";
+            // 
+            // TxtVendedor
+            // 
+            this.TxtVendedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtVendedor.Location = new System.Drawing.Point(265, 39);
+            this.TxtVendedor.Name = "TxtVendedor";
+            this.TxtVendedor.Size = new System.Drawing.Size(37, 26);
+            this.TxtVendedor.TabIndex = 4;
+            this.TxtVendedor.DoubleClick += new System.EventHandler(this.TxtVendedor_DoubleClick);
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.BtnAgregarLinea);
-            this.panel3.Controls.Add(this.LblVendedor);
             this.panel3.Controls.Add(this.label5);
             this.panel3.Controls.Add(this.label4);
+            this.panel3.Controls.Add(this.LblCliente);
+            this.panel3.Controls.Add(this.TxtCliente);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.label2);
-            this.panel3.Controls.Add(this.TxtVendedor);
-            this.panel3.Controls.Add(this.textBox4);
-            this.panel3.Controls.Add(this.textBox3);
-            this.panel3.Controls.Add(this.textBox2);
-            this.panel3.Controls.Add(this.textBox1);
+            this.panel3.Controls.Add(this.TxtPrecio);
+            this.panel3.Controls.Add(this.TxtCantidad);
+            this.panel3.Controls.Add(this.TxtDescripcion);
+            this.panel3.Controls.Add(this.TxtCodigoProducto);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel3.Location = new System.Drawing.Point(0, 91);
             this.panel3.Name = "panel3";
@@ -177,15 +216,7 @@ namespace Despachos.Forms
             this.BtnAgregarLinea.TabIndex = 10;
             this.BtnAgregarLinea.Text = "Agregar Línea";
             this.BtnAgregarLinea.UseVisualStyleBackColor = false;
-            // 
-            // LblVendedor
-            // 
-            this.LblVendedor.AutoSize = true;
-            this.LblVendedor.Location = new System.Drawing.Point(128, 9);
-            this.LblVendedor.Name = "LblVendedor";
-            this.LblVendedor.Size = new System.Drawing.Size(53, 13);
-            this.LblVendedor.TabIndex = 9;
-            this.LblVendedor.Text = "Vendedor";
+            this.BtnAgregarLinea.Click += new System.EventHandler(this.BtnAgregarLinea_Click);
             // 
             // label5
             // 
@@ -223,122 +254,146 @@ namespace Despachos.Forms
             this.label2.TabIndex = 5;
             this.label2.Text = "Código";
             // 
-            // TxtVendedor
+            // TxtPrecio
             // 
-            this.TxtVendedor.Location = new System.Drawing.Point(22, 6);
-            this.TxtVendedor.Name = "TxtVendedor";
-            this.TxtVendedor.Size = new System.Drawing.Size(100, 20);
-            this.TxtVendedor.TabIndex = 4;
-            this.TxtVendedor.DoubleClick += new System.EventHandler(this.TxtVendedor_DoubleClick);
+            this.TxtPrecio.Location = new System.Drawing.Point(717, 77);
+            this.TxtPrecio.Name = "TxtPrecio";
+            this.TxtPrecio.Size = new System.Drawing.Size(115, 20);
+            this.TxtPrecio.TabIndex = 3;
+            this.TxtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPrecio_KeyPress);
             // 
-            // textBox4
+            // TxtCantidad
             // 
-            this.textBox4.Location = new System.Drawing.Point(717, 77);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(115, 20);
-            this.textBox4.TabIndex = 3;
+            this.TxtCantidad.Location = new System.Drawing.Point(592, 77);
+            this.TxtCantidad.Name = "TxtCantidad";
+            this.TxtCantidad.Size = new System.Drawing.Size(119, 20);
+            this.TxtCantidad.TabIndex = 2;
+            this.TxtCantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCantidad_KeyPress);
             // 
-            // textBox3
+            // TxtDescripcion
             // 
-            this.textBox3.Location = new System.Drawing.Point(592, 77);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(119, 20);
-            this.textBox3.TabIndex = 2;
+            this.TxtDescripcion.Location = new System.Drawing.Point(151, 77);
+            this.TxtDescripcion.Name = "TxtDescripcion";
+            this.TxtDescripcion.ReadOnly = true;
+            this.TxtDescripcion.Size = new System.Drawing.Size(435, 20);
+            this.TxtDescripcion.TabIndex = 1;
             // 
-            // textBox2
+            // TxtCodigoProducto
             // 
-            this.textBox2.Location = new System.Drawing.Point(151, 77);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(435, 20);
-            this.textBox2.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(22, 77);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 0;
+            this.TxtCodigoProducto.Location = new System.Drawing.Point(22, 77);
+            this.TxtCodigoProducto.Name = "TxtCodigoProducto";
+            this.TxtCodigoProducto.Size = new System.Drawing.Size(100, 20);
+            this.TxtCodigoProducto.TabIndex = 0;
+            this.TxtCodigoProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodigoProducto_KeyPress);
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.TxtObservaciones);
-            this.panel4.Controls.Add(this.label9);
-            this.panel4.Controls.Add(this.TxtTotal);
-            this.panel4.Controls.Add(this.TxtSubtotal);
-            this.panel4.Controls.Add(this.label8);
-            this.panel4.Controls.Add(this.label7);
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Controls.Add(this.TxtImpuesto);
+            this.panel4.Controls.Add(this.panel8);
+            this.panel4.Controls.Add(this.panel7);
+            this.panel4.Controls.Add(this.panel6);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Location = new System.Drawing.Point(0, 503);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(997, 128);
             this.panel4.TabIndex = 5;
             // 
-            // TxtObservaciones
+            // panel8
             // 
-            this.TxtObservaciones.Location = new System.Drawing.Point(22, 21);
-            this.TxtObservaciones.Multiline = true;
-            this.TxtObservaciones.Name = "TxtObservaciones";
-            this.TxtObservaciones.Size = new System.Drawing.Size(735, 90);
-            this.TxtObservaciones.TabIndex = 7;
+            this.panel8.Controls.Add(this.label9);
+            this.panel8.Controls.Add(this.TxtObservaciones);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel8.Location = new System.Drawing.Point(26, 0);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(709, 122);
+            this.panel8.TabIndex = 10;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(22, 4);
+            this.label9.Location = new System.Drawing.Point(3, 3);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(78, 13);
             this.label9.TabIndex = 6;
             this.label9.Text = "Observaciones";
             // 
-            // TxtTotal
+            // TxtObservaciones
             // 
-            this.TxtTotal.Location = new System.Drawing.Point(857, 91);
-            this.TxtTotal.Name = "TxtTotal";
-            this.TxtTotal.Size = new System.Drawing.Size(100, 20);
-            this.TxtTotal.TabIndex = 5;
+            this.TxtObservaciones.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.TxtObservaciones.Location = new System.Drawing.Point(0, 25);
+            this.TxtObservaciones.Multiline = true;
+            this.TxtObservaciones.Name = "TxtObservaciones";
+            this.TxtObservaciones.Size = new System.Drawing.Size(709, 97);
+            this.TxtObservaciones.TabIndex = 7;
             // 
-            // TxtSubtotal
+            // panel7
             // 
-            this.TxtSubtotal.Location = new System.Drawing.Point(857, 28);
-            this.TxtSubtotal.Name = "TxtSubtotal";
-            this.TxtSubtotal.Size = new System.Drawing.Size(100, 20);
-            this.TxtSubtotal.TabIndex = 4;
+            this.panel7.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel7.Location = new System.Drawing.Point(0, 0);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(26, 128);
+            this.panel7.TabIndex = 9;
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.label8);
+            this.panel6.Controls.Add(this.TxtImpuesto);
+            this.panel6.Controls.Add(this.label6);
+            this.panel6.Controls.Add(this.TxtTotal);
+            this.panel6.Controls.Add(this.label7);
+            this.panel6.Controls.Add(this.TxtSubtotal);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel6.Location = new System.Drawing.Point(735, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(262, 128);
+            this.panel6.TabIndex = 8;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(801, 28);
+            this.label8.Location = new System.Drawing.Point(62, 21);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(46, 13);
             this.label8.TabIndex = 3;
             this.label8.Text = "Subtotal";
             // 
-            // label7
+            // TxtImpuesto
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(801, 91);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(31, 13);
-            this.label7.TabIndex = 2;
-            this.label7.Text = "Total";
+            this.TxtImpuesto.Location = new System.Drawing.Point(118, 52);
+            this.TxtImpuesto.Name = "TxtImpuesto";
+            this.TxtImpuesto.Size = new System.Drawing.Size(100, 20);
+            this.TxtImpuesto.TabIndex = 0;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(801, 59);
+            this.label6.Location = new System.Drawing.Point(62, 52);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(50, 13);
             this.label6.TabIndex = 1;
             this.label6.Text = "Impuesto";
             // 
-            // TxtImpuesto
+            // TxtTotal
             // 
-            this.TxtImpuesto.Location = new System.Drawing.Point(857, 59);
-            this.TxtImpuesto.Name = "TxtImpuesto";
-            this.TxtImpuesto.Size = new System.Drawing.Size(100, 20);
-            this.TxtImpuesto.TabIndex = 0;
+            this.TxtTotal.Location = new System.Drawing.Point(118, 84);
+            this.TxtTotal.Name = "TxtTotal";
+            this.TxtTotal.Size = new System.Drawing.Size(100, 20);
+            this.TxtTotal.TabIndex = 5;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(62, 84);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(31, 13);
+            this.label7.TabIndex = 2;
+            this.label7.Text = "Total";
+            // 
+            // TxtSubtotal
+            // 
+            this.TxtSubtotal.Location = new System.Drawing.Point(118, 21);
+            this.TxtSubtotal.Name = "TxtSubtotal";
+            this.TxtSubtotal.Size = new System.Drawing.Size(100, 20);
+            this.TxtSubtotal.TabIndex = 4;
             // 
             // panel5
             // 
@@ -355,6 +410,13 @@ namespace Despachos.Forms
             this.DgvDetalleFactura.AllowUserToDeleteRows = false;
             this.DgvDetalleFactura.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DgvDetalleFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvDetalleFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CCodigo,
+            this.CDescripcion,
+            this.CCantidad,
+            this.CPrecio,
+            this.CTotal});
+            this.DgvDetalleFactura.ContextMenuStrip = this.contextMenuStrip1;
             this.DgvDetalleFactura.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvDetalleFactura.Location = new System.Drawing.Point(0, 0);
             this.DgvDetalleFactura.MultiSelect = false;
@@ -364,7 +426,65 @@ namespace Despachos.Forms
             this.DgvDetalleFactura.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DgvDetalleFactura.Size = new System.Drawing.Size(997, 298);
             this.DgvDetalleFactura.TabIndex = 0;
-            this.DgvDetalleFactura.VirtualMode = true;
+            // 
+            // CCodigo
+            // 
+            this.CCodigo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CCodigo.HeaderText = "Código";
+            this.CCodigo.Name = "CCodigo";
+            this.CCodigo.ReadOnly = true;
+            this.CCodigo.Width = 130;
+            // 
+            // CDescripcion
+            // 
+            this.CDescripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CDescripcion.HeaderText = "Descripción";
+            this.CDescripcion.Name = "CDescripcion";
+            this.CDescripcion.ReadOnly = true;
+            // 
+            // CCantidad
+            // 
+            this.CCantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CCantidad.HeaderText = "Cantidad";
+            this.CCantidad.Name = "CCantidad";
+            this.CCantidad.ReadOnly = true;
+            this.CCantidad.Width = 200;
+            // 
+            // CPrecio
+            // 
+            this.CPrecio.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CPrecio.HeaderText = "Precio";
+            this.CPrecio.Name = "CPrecio";
+            this.CPrecio.ReadOnly = true;
+            this.CPrecio.Width = 200;
+            // 
+            // CTotal
+            // 
+            this.CTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CTotal.HeaderText = "Total";
+            this.CTotal.Name = "CTotal";
+            this.CTotal.ReadOnly = true;
+            this.CTotal.Width = 200;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.eliminarFilaToolStripMenuItem,
+            this.eliminarToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(118, 48);
+            // 
+            // eliminarFilaToolStripMenuItem
+            // 
+            this.eliminarFilaToolStripMenuItem.Name = "eliminarFilaToolStripMenuItem";
+            this.eliminarFilaToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.eliminarFilaToolStripMenuItem.Text = "Editar";
+            // 
+            // eliminarToolStripMenuItem
+            // 
+            this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
+            this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.eliminarToolStripMenuItem.Text = "Eliminar";
             // 
             // FrmFacturaGestion
             // 
@@ -375,7 +495,7 @@ namespace Despachos.Forms
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmFacturaGestion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmFacturaGestion";
@@ -386,9 +506,13 @@ namespace Despachos.Forms
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.DgvDetalleFactura)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -396,7 +520,7 @@ namespace Despachos.Forms
         #endregion
 
         private System.Windows.Forms.TextBox TxtCliente;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label LblPedido;
         private System.Windows.Forms.Label LblCliente;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button BtnCancelar;
@@ -410,10 +534,10 @@ namespace Despachos.Forms
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox TxtVendedor;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox TxtPrecio;
+        private System.Windows.Forms.TextBox TxtCantidad;
+        private System.Windows.Forms.TextBox TxtDescripcion;
+        private System.Windows.Forms.TextBox TxtCodigoProducto;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox TxtTotal;
         private System.Windows.Forms.TextBox TxtSubtotal;
@@ -424,6 +548,17 @@ namespace Despachos.Forms
         private System.Windows.Forms.TextBox TxtObservaciones;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CCodigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CDescripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CCantidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPrecio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CTotal;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem eliminarFilaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eliminarToolStripMenuItem;
         private System.Windows.Forms.DataGridView DgvDetalleFactura;
     }
 }

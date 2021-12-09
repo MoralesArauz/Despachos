@@ -11,9 +11,9 @@ namespace Logica.Models
     public class Producto : ICrudBase
     {
         // Atributos de la clase
-        public int IDProducto { get; set; }
+        public string IDProducto { get; set; }
         public string Descripcion { get; set; }
-        public float Costo { get; set; }
+        public Decimal Costo { get; set; }
         public float Impuesto { get; set; }
         public float Precio { get; set; }
         public bool Activo { get; set; }
@@ -36,6 +36,27 @@ namespace Logica.Models
         {
             bool R = false;
 
+            return R;
+        }
+
+        public Producto ConsultarPorCodigo(string CodigoProducto)
+        {
+            Producto R = new Producto();
+            if (!string.IsNullOrEmpty(CodigoProducto))
+            {
+                Conexion MiCnn = new Conexion();
+                MiCnn.ListadoDeParametros.Add(new SqlParameter("@CodigoProducto",CodigoProducto));
+                DataTable resultado = MiCnn.DMLSelect("SPProductoBuscarPorCodigo");
+                if (resultado != null && resultado.Rows.Count > 0)
+                {
+                    DataRow Fila = resultado.Rows[0];
+                    R.IDProducto = Convert.ToString(Fila["IDProducto"]);
+                    R.Descripcion = Convert.ToString(Fila["Descripcion"]);
+                    R.MiCategoria.IDCategoria = Convert.ToInt32(Fila["IDCategoria"]);
+                    R.Costo = Convert.ToDecimal(Fila["Costo"]);
+                    
+                }
+            }
             return R;
         }
 

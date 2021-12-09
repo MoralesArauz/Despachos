@@ -61,6 +61,31 @@ namespace Despachos.Forms
         {
             return true;
         }
+
+        private void FrmLogin_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void BtnIngresoDirecto_Click(object sender, EventArgs e)
+        {
+            Commons.ObjetosGlobales.MiUsuarioDeSistema.IDUsuario = 1;
+            Commons.ObjetosGlobales.MiUsuarioDeSistema.Correo = "amorales@maderassancarlos.com";
+            Commons.ObjetosGlobales.MiUsuarioDeSistema.Nombre = "Usuario de Pruebas";
+            Commons.ObjetosGlobales.MiUsuarioDeSistema.MiRol.IDRol = 1;
+            //muestro el objeto global del FrmMain
+            Commons.ObjetosGlobales.MiFormPrincipal.Show();
+            //oculto (no destruyo) el frm de Login
+            this.Hide();
+        }
+
+        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Shift & e.KeyCode == Keys.Escape)
+            {
+                BtnIngresoDirecto.Visible = true;
+            }
+        }
     }
 
         

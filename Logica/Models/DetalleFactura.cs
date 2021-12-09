@@ -14,6 +14,7 @@ namespace Logica.Models
         public float CantidadFacturada { get; set; }
         public float CantidadDespachada { get; set; }
         public float Costo { get; set; }
+        public float Precio { get; set; }
         public int IDSucursal { get; set; }
         public int IDFactura { get; set; }
 

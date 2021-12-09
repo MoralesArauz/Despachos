@@ -35,12 +35,18 @@ namespace Despachos.Controls
             this.label1 = new System.Windows.Forms.Label();
             this.CboxSucursales = new System.Windows.Forms.ComboBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.nuevaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.despacharToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.DgvListaFacturas = new System.Windows.Forms.DataGridView();
+            this.CPedido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CCliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CVendedor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CFecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CSucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nuevaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -56,7 +62,7 @@ namespace Despachos.Controls
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(836, 67);
+            this.panel1.Size = new System.Drawing.Size(1174, 67);
             this.panel1.TabIndex = 0;
             // 
             // comboBox1
@@ -108,22 +114,9 @@ namespace Despachos.Controls
             this.reportesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(836, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1174, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // nuevaToolStripMenuItem
-            // 
-            this.nuevaToolStripMenuItem.Name = "nuevaToolStripMenuItem";
-            this.nuevaToolStripMenuItem.Size = new System.Drawing.Size(53, 20);
-            this.nuevaToolStripMenuItem.Text = "Nueva";
-            this.nuevaToolStripMenuItem.Click += new System.EventHandler(this.nuevaToolStripMenuItem_Click);
-            // 
-            // consultarToolStripMenuItem
-            // 
-            this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(70, 20);
-            this.consultarToolStripMenuItem.Text = "Consultar";
             // 
             // despacharToolStripMenuItem
             // 
@@ -143,21 +136,98 @@ namespace Despachos.Controls
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(0, 91);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(836, 379);
+            this.panel2.Size = new System.Drawing.Size(1174, 464);
             this.panel2.TabIndex = 2;
             // 
             // DgvListaFacturas
             // 
             this.DgvListaFacturas.AllowUserToAddRows = false;
             this.DgvListaFacturas.AllowUserToDeleteRows = false;
+            this.DgvListaFacturas.AllowUserToResizeRows = false;
             this.DgvListaFacturas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DgvListaFacturas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CPedido,
+            this.CCliente,
+            this.CVendedor,
+            this.CTotal,
+            this.CFecha,
+            this.CSucursal});
             this.DgvListaFacturas.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DgvListaFacturas.Location = new System.Drawing.Point(0, 0);
+            this.DgvListaFacturas.MultiSelect = false;
             this.DgvListaFacturas.Name = "DgvListaFacturas";
             this.DgvListaFacturas.ReadOnly = true;
+            this.DgvListaFacturas.RowHeadersVisible = false;
             this.DgvListaFacturas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListaFacturas.Size = new System.Drawing.Size(836, 379);
+            this.DgvListaFacturas.Size = new System.Drawing.Size(1174, 464);
             this.DgvListaFacturas.TabIndex = 0;
+            this.DgvListaFacturas.VirtualMode = true;
+            // 
+            // CPedido
+            // 
+            this.CPedido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CPedido.DataPropertyName = "Pedido";
+            this.CPedido.HeaderText = "Pedido";
+            this.CPedido.Name = "CPedido";
+            this.CPedido.ReadOnly = true;
+            this.CPedido.Width = 125;
+            // 
+            // CCliente
+            // 
+            this.CCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.CCliente.DataPropertyName = "Cliente";
+            this.CCliente.HeaderText = "Cliente";
+            this.CCliente.Name = "CCliente";
+            this.CCliente.ReadOnly = true;
+            // 
+            // CVendedor
+            // 
+            this.CVendedor.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CVendedor.DataPropertyName = "Vendedor";
+            this.CVendedor.HeaderText = "Vendedor";
+            this.CVendedor.Name = "CVendedor";
+            this.CVendedor.ReadOnly = true;
+            this.CVendedor.Width = 300;
+            // 
+            // CTotal
+            // 
+            this.CTotal.DataPropertyName = "Total";
+            this.CTotal.HeaderText = "Total";
+            this.CTotal.Name = "CTotal";
+            this.CTotal.ReadOnly = true;
+            // 
+            // CFecha
+            // 
+            this.CFecha.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CFecha.DataPropertyName = "Fecha";
+            this.CFecha.HeaderText = "Fecha / Hora";
+            this.CFecha.Name = "CFecha";
+            this.CFecha.ReadOnly = true;
+            this.CFecha.Width = 200;
+            // 
+            // CSucursal
+            // 
+            this.CSucursal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.CSucursal.DataPropertyName = "Sucursal";
+            this.CSucursal.HeaderText = "Sucursal";
+            this.CSucursal.Name = "CSucursal";
+            this.CSucursal.ReadOnly = true;
+            this.CSucursal.Width = 250;
+            // 
+            // nuevaToolStripMenuItem
+            // 
+            this.nuevaToolStripMenuItem.Image = global::Despachos.Properties.Resources.nuevo;
+            this.nuevaToolStripMenuItem.Name = "nuevaToolStripMenuItem";
+            this.nuevaToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.nuevaToolStripMenuItem.Text = "Nueva";
+            this.nuevaToolStripMenuItem.Click += new System.EventHandler(this.nuevaToolStripMenuItem_Click);
+            // 
+            // consultarToolStripMenuItem
+            // 
+            this.consultarToolStripMenuItem.Image = global::Despachos.Properties.Resources.imprimir;
+            this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(81, 20);
+            this.consultarToolStripMenuItem.Text = "Imprimir";
             // 
             // CtrlFacturas
             // 
@@ -167,7 +237,7 @@ namespace Despachos.Controls
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.Name = "CtrlFacturas";
-            this.Size = new System.Drawing.Size(836, 470);
+            this.Size = new System.Drawing.Size(1174, 555);
             this.Load += new System.EventHandler(this.CtrlFacturas_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -194,5 +264,11 @@ namespace Despachos.Controls
         private System.Windows.Forms.ToolStripMenuItem reportesToolStripMenuItem;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView DgvListaFacturas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CPedido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CCliente;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CVendedor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CFecha;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CSucursal;
     }
 }
