@@ -13,6 +13,7 @@ namespace Logica.Models
         public List<DetalleFactura> DetalleLineas { get; set; }
         public Cliente MiCliente { get; set; }
         public Vendedor MiVendedor { get; set; }
+        public Producto MiProducto { get; set; }
         public string Observaciones { get; set; }
         public float CostoTotal { get; set; }
 

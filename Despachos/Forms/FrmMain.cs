@@ -15,6 +15,7 @@ namespace Despachos.Forms
         public FrmMain()
         {
             InitializeComponent();
+            //System.Threading.Thread.CurrentThread.CurrentCulture = new System.Globalization.CultureInfo("es-ES");
         }
 
         private void FrmMain_FormClosed(object sender, FormClosedEventArgs e)

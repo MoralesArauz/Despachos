@@ -74,7 +74,7 @@ namespace Logica.Models
             return R;
         }
         // Devuelve la lista de los productos de la base de datos
-        public DataTable Listar(bool VerActivos = true)
+        public DataTable Listar(bool VerActivos = true, string filtro="")
         {
             DataTable R = new DataTable();
             Conexion MiCnn = new Conexion();

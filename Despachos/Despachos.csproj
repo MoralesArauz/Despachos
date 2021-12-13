@@ -95,6 +95,12 @@
     <Compile Include="Forms\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmProductosBuscar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmProductosBuscar.Designer.cs">
+      <DependentUpon>FrmProductosBuscar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FrmUsuarioGestion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FrmProductosBuscar.resx">
+      <DependentUpon>FrmProductosBuscar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmUsuarioGestion.resx">
       <DependentUpon>FrmUsuarioGestion.cs</DependentUpon>

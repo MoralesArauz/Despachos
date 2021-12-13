@@ -15,15 +15,19 @@ namespace Despachos.Forms
 
         public Logica.Models.Factura MiFactura { get; set; }
         public Logica.Models.DetalleFactura MiDetalleFactura { get; set; }
+        public Logica.Models.Producto MiProducto { get; set; }
 
         // para llevar la cuenta de las líneas agregadas a la factura
-        public int cont_fila { get; set; }
+        public static int cont_fila = 0;
+        public static double total = 0;
         public FrmFacturaGestion()
         {
             InitializeComponent();
             MiFactura = new Logica.Models.Factura();
-            MiDetalleFactura = new Logica.Models.DetalleFactura();
+            MiProducto = new Logica.Models.Producto();
+            //MiDetalleFactura = new Logica.Models.DetalleFactura();
             cont_fila = 0;
+            TxtCodigoProducto.AcceptsTab = true;
         }
 
         private void BtnCancelar_Click(object sender, EventArgs e)
@@ -35,48 +39,7 @@ namespace Despachos.Forms
         {
             
         }
-        //Valida que el el TextBox del precio se ingresen solo números y un punto decimal
-        //private bool ValidarDecimal()
-        //{
-        //    int count = 0, len = TxtCantidad.Text.Length;
-        //    //Si el punto está en el inicio o final del texto ...
-        //    if (TxtCantidad.Text[0] == '.' || TxtCantidad.Text[len - 1] == '.')
-        //        return false;
-        //    for (int i = 0; i != len; ++i)
-        //    {
-        //        //Si es un punto, contamos ...
-        //        if (TxtCantidad.Text[i] == '.')
-        //            ++count;
-        //        //Si no es un caracter númerico ...
-        //        else if (!(TxtCantidad.Text[i] >= '0' && TxtCantidad.Text[i] <= '9'))
-        //            return false;
-
-        //        if (count > 1) //Si hay más de un punto decimal.
-        //            return false;
-        //    }
-        //    return true;
-        //}
-
-
-        //private bool LimitarNumeros()
-        //{
-        //    int len = TxtCantidad.Text.Length;
-        //    int count = 0;
-        //    bool point = false;
-        //    for (int i = 0; i != len; ++i)
-        //    {
-        //        ++count;
-        //        if (TxtCantidad.Text[i] == '.')
-        //        {
-        //            count = 0;
-        //            point = true;
-        //        }
-        //        //Si hay más de 9 enteros o más de dos decimales.
-        //        else if ((point && count > 2) || (!point && count > 9))
-        //            return false;
-        //    }
-        //    return true;
-        //}
+       
 
         private bool ValidarDatos()
         {
@@ -84,7 +47,9 @@ namespace Despachos.Forms
             if (MiFactura.MiCliente.IDCliente > 0 &&
                 MiFactura.MiVendedor.IDVendedor > 0 &&
                 !string.IsNullOrEmpty(TxtTotal.Text.Trim()) &&
-                !string.IsNullOrEmpty(TxtObservaciones.Text.Trim()))
+                TxtTotal.Text.Trim() != "₡0" &&
+                !string.IsNullOrEmpty(TxtObservaciones.Text.Trim())&&
+                DgvDetalleFactura.Rows.Count > 0)
             {
                 R = true;
             }
@@ -168,7 +133,6 @@ namespace Despachos.Forms
                 {
                     MessageBox.Show("Factura agregada","Éxito", MessageBoxButtons.OK);
                     LimpiarFormulario();
-                    
                 }
                 else
                 {
@@ -249,19 +213,30 @@ namespace Despachos.Forms
                     {
                         // Actualiza la cantidad del producto que se está repitiendo
                         DgvDetalleFactura.Rows[num_fila].Cells[2].Value = (Convert.ToDouble(TxtCantidad.Text.Trim())+Convert.ToDouble(DgvDetalleFactura.Rows[num_fila].Cells[2].Value)).ToString();
-                        double total = Convert.ToDouble(DgvDetalleFactura.Rows[num_fila].Cells[2].Value) * Convert.ToDouble(DgvDetalleFactura.Rows[num_fila].Cells[3].Value);
-                        DgvDetalleFactura.Rows[num_fila].Cells[4].Value = total;
+                        double totalLinea = Convert.ToDouble(DgvDetalleFactura.Rows[num_fila].Cells[2].Value) * Convert.ToDouble(DgvDetalleFactura.Rows[num_fila].Cells[3].Value);
+                        DgvDetalleFactura.Rows[num_fila].Cells[4].Value = totalLinea;
                     }
                     else
                     {
                         AgregarLineaFactura();
                     }
                 }
+
+
+                // En esta parte se caculará el total de la compra
+                total = 0;
+                foreach (DataGridViewRow fila in DgvDetalleFactura.Rows)
+                {
+                    total += Convert.ToDouble(fila.Cells[4].Value);
+                }
+
+                TxtTotal.Text = "₡" + total.ToString();
                 //MessageBox.Show("Linea agregada!","Agregando", MessageBoxButtons.OK);
                 TxtCodigoProducto.Clear();
                 TxtDescripcion.Clear();
                 TxtCantidad.Clear();
                 TxtPrecio.Clear();
+                TxtCodigoProducto.Focus(); // Para digitar el siguiente producto.
             }
         }
 
@@ -269,8 +244,9 @@ namespace Despachos.Forms
         {
             DgvDetalleFactura.Rows.Add(TxtCodigoProducto.Text.Trim(),TxtDescripcion.Text.Trim(),TxtCantidad.Text.Trim(),TxtPrecio.Text.Trim());
             // Multiplica Cantidad por Precio
-            double total = Convert.ToDouble(DgvDetalleFactura.Rows[cont_fila].Cells[2].Value)* Convert.ToDouble(DgvDetalleFactura.Rows[cont_fila].Cells[3].Value);
-            DgvDetalleFactura.Rows[cont_fila].Cells[4].Value = total;
+           
+            double totalLinea = Convert.ToDouble(DgvDetalleFactura.Rows[cont_fila].Cells[2].Value) * Convert.ToDouble(DgvDetalleFactura.Rows[cont_fila].Cells[3].Value);
+            DgvDetalleFactura.Rows[cont_fila].Cells[4].Value = totalLinea;
             cont_fila++;
         }
         // Si existe el código de producto digitado en el TxtCodigo producto, entonces se carga en los
@@ -278,21 +254,30 @@ namespace Despachos.Forms
         // de lo contrario se abre el form de búsqueda de productos
         private void TxtCodigoProducto_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Enter || e.KeyChar == (char)Keys.Tab)
+            if (e.KeyChar == (char)Keys.Enter)
             {
                 // Esta línea evita que windows haga el sonido de advertencia al oprimir enter en un 
                 // textbox que no admite multilíneas
                 e.Handled = true;
 
-                Logica.Models.Producto producto = new Logica.Models.Producto();
-                producto = producto.ConsultarPorCodigo(TxtCodigoProducto.Text.Trim());
-                if (producto.IDProducto != null)
-                {
-                    TxtCodigoProducto.Text = producto.IDProducto;
-                    TxtDescripcion.Text = producto.Descripcion;
-                    MiDetalleFactura.MiProducto = producto;
-                    TxtCantidad.Focus();
-                }
+                CargarProducto();
+            }
+            if (e.KeyChar == (char)Keys.Tab)
+            {
+                //
+                CargarProducto();
+            }
+        }
+        // Carga los datos del producto consultado en la base de datos.
+        private void CargarProducto()
+        {
+            MiProducto = MiProducto.ConsultarPorCodigo(TxtCodigoProducto.Text.Trim());
+            if (MiProducto.IDProducto != null)
+            {
+                TxtCodigoProducto.Text = MiProducto.IDProducto;
+                TxtDescripcion.Text = MiProducto.Descripcion;
+                //MiDetalleFactura.MiProducto = MiProducto;
+                TxtCantidad.Focus();
             }
         }
 
@@ -310,15 +295,55 @@ namespace Despachos.Forms
         // Aun no se controla la cantidad de números antes y después del punto
         private void validarDecimales(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
             {
                 e.Handled = true;
             }
 
             // solo 1 punto decimal
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            if (cont_fila > 0)
+            {
+                DialogResult respuesta = MessageBox.Show("Está seguro que desea eliminar la línea?", "Eliminar Línea", MessageBoxButtons.YesNo);
+                if (respuesta == DialogResult.Yes)
+                {
+                    // Resta al total el subtotal de la celda que se está eliminando, el cual se encuentra en la columna 4
+                    total = total - (Convert.ToDouble(DgvDetalleFactura.Rows[DgvDetalleFactura.CurrentRow.Index].Cells[4].Value));
+                    // Se actualiza el total de la factura
+                    TxtTotal.Text = "₡" + total.ToString();
+                    // Eliminamos del DataGrid la fila que se desea eliminar
+                    DgvDetalleFactura.Rows.RemoveAt(DgvDetalleFactura.CurrentRow.Index);
+                    // Actualizamos el contador de las filas
+                    cont_fila--;
+                }
+            }
+        }
+
+        private void TxtCodigoProducto_DoubleClick(object sender, EventArgs e)
+        {
+            AbrirListaDeProductos();
+        }
+
+        private void AbrirListaDeProductos()
+        {
+            FrmProductosBuscar MiFormDeBusqueda = new FrmProductosBuscar();
+
+            DialogResult respuesta = MiFormDeBusqueda.ShowDialog();
+
+            if (respuesta == DialogResult.OK)
+            {
+                TxtCodigoProducto.Text = MiProducto.IDProducto;
+                TxtDescripcion.Text = MiProducto.Descripcion;
+                //MiDetalleFactura.MiProducto = MiProducto;
+                TxtCantidad.Focus();
             }
         }
     }

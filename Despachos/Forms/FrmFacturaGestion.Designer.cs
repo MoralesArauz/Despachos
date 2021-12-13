@@ -284,6 +284,7 @@ namespace Despachos.Forms
             this.TxtCodigoProducto.Name = "TxtCodigoProducto";
             this.TxtCodigoProducto.Size = new System.Drawing.Size(100, 20);
             this.TxtCodigoProducto.TabIndex = 0;
+            this.TxtCodigoProducto.DoubleClick += new System.EventHandler(this.TxtCodigoProducto_DoubleClick);
             this.TxtCodigoProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCodigoProducto_KeyPress);
             // 
             // panel4
@@ -374,10 +375,13 @@ namespace Despachos.Forms
             // 
             // TxtTotal
             // 
-            this.TxtTotal.Location = new System.Drawing.Point(118, 84);
+            this.TxtTotal.Enabled = false;
+            this.TxtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTotal.Location = new System.Drawing.Point(118, 83);
             this.TxtTotal.Name = "TxtTotal";
-            this.TxtTotal.Size = new System.Drawing.Size(100, 20);
+            this.TxtTotal.Size = new System.Drawing.Size(100, 22);
             this.TxtTotal.TabIndex = 5;
+            this.TxtTotal.Text = "₡0";
             // 
             // label7
             // 
@@ -408,6 +412,7 @@ namespace Despachos.Forms
             // 
             this.DgvDetalleFactura.AllowUserToAddRows = false;
             this.DgvDetalleFactura.AllowUserToDeleteRows = false;
+            this.DgvDetalleFactura.AllowUserToResizeRows = false;
             this.DgvDetalleFactura.BackgroundColor = System.Drawing.SystemColors.Control;
             this.DgvDetalleFactura.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DgvDetalleFactura.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -485,6 +490,7 @@ namespace Despachos.Forms
             this.eliminarToolStripMenuItem.Name = "eliminarToolStripMenuItem";
             this.eliminarToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.eliminarToolStripMenuItem.Text = "Eliminar";
+            this.eliminarToolStripMenuItem.Click += new System.EventHandler(this.eliminarToolStripMenuItem_Click);
             // 
             // FrmFacturaGestion
             // 
@@ -496,6 +502,7 @@ namespace Despachos.Forms
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "FrmFacturaGestion";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmFacturaGestion";
