@@ -10,12 +10,15 @@ namespace Logica.Models
 {
     public class Factura : ICrudBase
     {
+        public int IDFactura { get; set; }
         public List<DetalleFactura> DetalleLineas { get; set; }
+        public string Pedido { get; set; }
         public Cliente MiCliente { get; set; }
         public Vendedor MiVendedor { get; set; }
         public Producto MiProducto { get; set; }
         public string Observaciones { get; set; }
         public float CostoTotal { get; set; }
+        public DateTime FechaHora { get; set; }
 
 
         public Factura()
@@ -23,6 +26,7 @@ namespace Logica.Models
             DetalleLineas = new List<DetalleFactura>();
             MiCliente = new Cliente();
             MiVendedor = new Vendedor();
+            MiProducto = new Producto();
         }
         public bool Agregar()
         {
@@ -33,10 +37,11 @@ namespace Logica.Models
             MiCnn.ListadoDeParametros.Add(new SqlParameter("@CostoTotal", CostoTotal));
             MiCnn.ListadoDeParametros.Add(new SqlParameter("@Observaciones", Observaciones));
 
-            int resultado = MiCnn.DMLUpdateDeleteInsert("SPFacturaAgregar");
+            Object resultado = MiCnn.DMLConRetornoEscalar("SPFacturaAgregar");
 
-            if (resultado > 0)
+            if (resultado != null)
             {
+                IDFactura = Convert.ToInt32(resultado.ToString());
                 R = true;
             }
 
@@ -47,6 +52,15 @@ namespace Logica.Models
         {
             bool R = false;
 
+            return R;
+        }
+
+        public Factura ConsultarPorPedido()
+        {
+            Factura R = new Factura();
+            Conexion MiCnn = new Conexion();
+            MiCnn.ListadoDeParametros.Add(new SqlParameter("@Pedido",Pedido));
+            DataTable retorno = MiCnn.DMLSelect("");
             return R;
         }
 

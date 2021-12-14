@@ -26,6 +26,7 @@ namespace Despachos.Forms
             if (DgvListaVendedores.Rows.Count > 0 && DgvListaVendedores.SelectedRows.Count == 1)
             {
                 int IDVendedor = Convert.ToInt32(DgvListaVendedores.SelectedRows[0].Cells["CID"].Value);
+                int IDSucursal = Convert.ToInt32(DgvListaVendedores.SelectedRows[0].Cells["CIDSuc"].Value);
                 string NombreVendedor = Convert.ToString(DgvListaVendedores.SelectedRows[0].Cells["CNombre"].Value);
                 string ApellidoVendedor = Convert.ToString(DgvListaVendedores.SelectedRows[0].Cells["CApellido"].Value);
                 // Una vez que he capturado la información necesaria de las columnas del DataGridView
@@ -33,6 +34,7 @@ namespace Despachos.Forms
                 Commons.ObjetosGlobales.MiFormFactura.MiFactura.MiVendedor.IDVendedor = IDVendedor;
                 Commons.ObjetosGlobales.MiFormFactura.MiFactura.MiVendedor.Nombre = NombreVendedor;
                 Commons.ObjetosGlobales.MiFormFactura.MiFactura.MiVendedor.Apellido = ApellidoVendedor;
+                Commons.ObjetosGlobales.MiFormFactura.MiFactura.MiVendedor.MiSucursal.IDSucursal = IDSucursal;
 
                 // Esto cierra el form y retorna una respuesta al formulario que lo invocó
                 this.DialogResult = DialogResult.OK;

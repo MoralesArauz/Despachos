@@ -14,8 +14,8 @@ namespace Despachos.Forms
     {
 
         public Logica.Models.Factura MiFactura { get; set; }
-        public Logica.Models.DetalleFactura MiDetalleFactura { get; set; }
-        public Logica.Models.Producto MiProducto { get; set; }
+        //public Logica.Models.DetalleFactura MiDetalleFactura { get; set; }
+        //public Logica.Models.Producto MiProducto { get; set; }
 
         // para llevar la cuenta de las líneas agregadas a la factura
         public static int cont_fila = 0;
@@ -24,7 +24,7 @@ namespace Despachos.Forms
         {
             InitializeComponent();
             MiFactura = new Logica.Models.Factura();
-            MiProducto = new Logica.Models.Producto();
+            //MiProducto = new Logica.Models.Producto();
             //MiDetalleFactura = new Logica.Models.DetalleFactura();
             cont_fila = 0;
             TxtCodigoProducto.AcceptsTab = true;
@@ -47,7 +47,7 @@ namespace Despachos.Forms
             if (MiFactura.MiCliente.IDCliente > 0 &&
                 MiFactura.MiVendedor.IDVendedor > 0 &&
                 !string.IsNullOrEmpty(TxtTotal.Text.Trim()) &&
-                TxtTotal.Text.Trim() != "₡0" &&
+                TxtTotal.Text.Trim() != "0" &&
                 !string.IsNullOrEmpty(TxtObservaciones.Text.Trim())&&
                 DgvDetalleFactura.Rows.Count > 0)
             {
@@ -89,7 +89,7 @@ namespace Despachos.Forms
         {
             bool R = false;
 
-            if (!string.IsNullOrEmpty(MiDetalleFactura.MiProducto.IDProducto) &&
+            if (!string.IsNullOrEmpty(MiFactura.MiProducto.IDProducto) &&
                 !string.IsNullOrEmpty(TxtCantidad.Text.Trim()) &&
                 !string.IsNullOrEmpty(TxtPrecio.Text.Trim())) 
             {
@@ -97,7 +97,7 @@ namespace Despachos.Forms
             }
             else
             {
-                if (string.IsNullOrEmpty(MiDetalleFactura.MiProducto.IDProducto))
+                if (string.IsNullOrEmpty(MiFactura.MiProducto.IDProducto))
                 {
                     MessageBox.Show("Debe escoger un producto válido","Error", MessageBoxButtons.OK);
                     TxtCodigoProducto.Focus();
@@ -132,13 +132,38 @@ namespace Despachos.Forms
                 if (MiFactura.Agregar())
                 {
                     MessageBox.Show("Factura agregada","Éxito", MessageBoxButtons.OK);
+                    // Se agregan las líneas con el detalle de la factura
+                    GuardarLineasFactura();
+
+
                     LimpiarFormulario();
+                    this.Close();
                 }
                 else
                 {
                     MessageBox.Show("La factura no se agregó", "Error", MessageBoxButtons.OK);
                 }
             }
+        }
+
+        private void GuardarLineasFactura()
+        {
+            // Verifica que se haya recuperado el IDFactura después del insert
+            if (MiFactura.IDFactura > 0)
+            {
+                foreach (Logica.Models.DetalleFactura detalleFactura in MiFactura.DetalleLineas)
+                {
+                    // Asigna el ID correcto de la factura y la sucursal
+                    detalleFactura.IDFactura = MiFactura.IDFactura;
+                    detalleFactura.IDSucursal = MiFactura.MiVendedor.MiSucursal.IDSucursal;
+                    detalleFactura.Agregar();
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se ha generado la factura", "Error de ingreso", MessageBoxButtons.OK);
+            }
+            
         }
 
         private void LimpiarFormulario()
@@ -159,7 +184,7 @@ namespace Despachos.Forms
             if (respuesta == DialogResult.OK)
             {
                 TxtCliente.Text = MiFactura.MiCliente.IDCliente.ToString();
-                LblCliente.Text += MiFactura.MiCliente.Nombre + " "+ MiFactura.MiCliente.Apellido;
+                LblCliente.Text += MiFactura.MiCliente.Nombre + " " + MiFactura.MiCliente.Apellido;
                 TxtCliente.Enabled = false;
             }
         }
@@ -178,6 +203,7 @@ namespace Despachos.Forms
                 // Nos escribe el número de pedido que continua en la tabla dependiendo del vendedor que escojamos
                 string consecutivo = MiFactura.ConsecutivoFactura(MiFactura.MiVendedor.IDVendedor);
                 LblPedido.Text += consecutivo;
+                MiFactura.Pedido = consecutivo;
                 //MessageBox.Show("El consecutivo de la factura es: " + consecutivo, "Éxito", MessageBoxButtons.OK);
                 
             }
@@ -201,7 +227,7 @@ namespace Despachos.Forms
                     foreach (DataGridViewRow fila in DgvDetalleFactura.Rows)
                     {
                         // Comprueba si ya se ha agregado ese código a la factura
-                        if (fila.Cells[0].Value.ToString()==TxtCodigoProducto.Text)
+                        if (fila.Cells[0].Value.ToString() == TxtCodigoProducto.Text)
                         {
                             existeLinea = true;
                             // recupera la línea en la que está el código repetido
@@ -230,7 +256,7 @@ namespace Despachos.Forms
                     total += Convert.ToDouble(fila.Cells[4].Value);
                 }
 
-                TxtTotal.Text = "₡" + total.ToString();
+                TxtTotal.Text = total.ToString();
                 //MessageBox.Show("Linea agregada!","Agregando", MessageBoxButtons.OK);
                 TxtCodigoProducto.Clear();
                 TxtDescripcion.Clear();
@@ -244,8 +270,14 @@ namespace Despachos.Forms
         {
             DgvDetalleFactura.Rows.Add(TxtCodigoProducto.Text.Trim(),TxtDescripcion.Text.Trim(),TxtCantidad.Text.Trim(),TxtPrecio.Text.Trim());
             // Multiplica Cantidad por Precio
-           
-            double totalLinea = Convert.ToDouble(DgvDetalleFactura.Rows[cont_fila].Cells[2].Value) * Convert.ToDouble(DgvDetalleFactura.Rows[cont_fila].Cells[3].Value);
+            double cantidad = Convert.ToDouble(DgvDetalleFactura.Rows[cont_fila].Cells[2].Value);
+            double precio = Convert.ToDouble(DgvDetalleFactura.Rows[cont_fila].Cells[3].Value);
+            double totalLinea =  cantidad * precio;
+
+            // Se crea el detalle de la factura para agregarlo a la lista
+            MiFactura.DetalleLineas.Add(new Logica.Models.DetalleFactura(MiFactura.MiProducto, cantidad, 0,
+                MiFactura.MiProducto.Costo, precio, MiFactura.MiVendedor.MiSucursal.IDSucursal, MiFactura.IDFactura));
+            //Se define el total de la línea
             DgvDetalleFactura.Rows[cont_fila].Cells[4].Value = totalLinea;
             cont_fila++;
         }
@@ -271,24 +303,44 @@ namespace Despachos.Forms
         // Carga los datos del producto consultado en la base de datos.
         private void CargarProducto()
         {
-            MiProducto = MiProducto.ConsultarPorCodigo(TxtCodigoProducto.Text.Trim());
-            if (MiProducto.IDProducto != null)
+            MiFactura.MiProducto = new Logica.Models.Producto();
+            MiFactura.MiProducto = MiFactura.MiProducto.ConsultarPorCodigo(TxtCodigoProducto.Text.Trim());
+            if (MiFactura.MiProducto.IDProducto != null)
             {
-                TxtCodigoProducto.Text = MiProducto.IDProducto;
-                TxtDescripcion.Text = MiProducto.Descripcion;
-                //MiDetalleFactura.MiProducto = MiProducto;
+                TxtCodigoProducto.Text = MiFactura.MiProducto.IDProducto;
+                TxtDescripcion.Text = MiFactura.MiProducto.Descripcion;
+                MiFactura.MiProducto = MiFactura.MiProducto;
                 TxtCantidad.Focus();
+            }
+            else
+            {
+                AbrirListaDeProductos();
             }
         }
 
         private void TxtCantidad_KeyPress(object sender, KeyPressEventArgs e)
         {
             validarDecimales(sender, e);
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Esta línea evita que windows haga el sonido de advertencia al oprimir enter en un 
+                // textbox que no admite multilíneas
+                e.Handled = true;
+
+                TxtPrecio.Focus();
+            }
+
         }
 
         private void TxtPrecio_KeyPress(object sender, KeyPressEventArgs e)
         {
             validarDecimales(sender,e);
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                // Esta línea evita que windows haga el sonido de advertencia al oprimir enter en un 
+                // textbox que no admite multilíneas
+                e.Handled = true;
+            }
         }
 
         // Esto es para que solo admita números decimales o enteros, para la cantidad y el precio
@@ -318,7 +370,7 @@ namespace Despachos.Forms
                     // Resta al total el subtotal de la celda que se está eliminando, el cual se encuentra en la columna 4
                     total = total - (Convert.ToDouble(DgvDetalleFactura.Rows[DgvDetalleFactura.CurrentRow.Index].Cells[4].Value));
                     // Se actualiza el total de la factura
-                    TxtTotal.Text = "₡" + total.ToString();
+                    TxtTotal.Text = total.ToString();
                     // Eliminamos del DataGrid la fila que se desea eliminar
                     DgvDetalleFactura.Rows.RemoveAt(DgvDetalleFactura.CurrentRow.Index);
                     // Actualizamos el contador de las filas
@@ -340,10 +392,34 @@ namespace Despachos.Forms
 
             if (respuesta == DialogResult.OK)
             {
-                TxtCodigoProducto.Text = MiProducto.IDProducto;
-                TxtDescripcion.Text = MiProducto.Descripcion;
+                
+                TxtCodigoProducto.Text = MiFactura.MiProducto.IDProducto;
+                TxtDescripcion.Text = MiFactura.MiProducto.Descripcion;
                 //MiDetalleFactura.MiProducto = MiProducto;
                 TxtCantidad.Focus();
+            }
+        }
+
+        private void BtnDetalleLista_Click(object sender, EventArgs e)
+        {
+            MostrarDetalle();
+        }
+
+        private void MostrarDetalle()
+        {
+            string detalleString = "";
+            if (MiFactura.DetalleLineas.Count > 0)
+            {
+                
+                foreach (Logica.Models.DetalleFactura linea in MiFactura.DetalleLineas)
+                {
+                    detalleString += linea.ToString()+'\n';
+                }
+                MessageBox.Show(detalleString,"Detalle Líneas", MessageBoxButtons.OK);
+            }
+            else
+            {
+                MessageBox.Show("Aun no hay líneas que mostrar", "Detalle Líneas", MessageBoxButtons.OK);
             }
         }
     }

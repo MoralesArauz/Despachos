@@ -39,14 +39,17 @@ namespace Despachos.Forms
             {
                 string IDProducto = Convert.ToString(DgvProductos.SelectedRows[0].Cells["CIDProducto"].Value);
                 string Descripcion = Convert.ToString(DgvProductos.SelectedRows[0].Cells["CDescripcion"].Value);
-                Decimal Costo = Convert.ToDecimal(DgvProductos.SelectedRows[0].Cells["CCosto"].Value);
-                Decimal Impuesto = Convert.ToDecimal(DgvProductos.SelectedRows[0].Cells["CImpuesto"].Value);
+                double Costo = Convert.ToDouble(DgvProductos.SelectedRows[0].Cells["CCosto"].Value);
+                double Impuesto = Convert.ToDouble(DgvProductos.SelectedRows[0].Cells["CImpuesto"].Value);
                 // Una vez que he capturado la información necesaria de las columnas del DataGridView
                 // puedo pasar estos al objeto local MiFactura
-                Commons.ObjetosGlobales.MiFormFactura.MiFactura.MiProducto.IDProducto = IDProducto;
-                Commons.ObjetosGlobales.MiFormFactura.MiFactura.MiProducto.Descripcion = Descripcion;
-                Commons.ObjetosGlobales.MiFormFactura.MiFactura.MiProducto.Costo = Costo;
-                Commons.ObjetosGlobales.MiFormFactura.MiFactura.MiProducto.Costo = Impuesto;
+                Commons.ObjetosGlobales.MiFormFactura.MiFactura.MiProducto = new Logica.Models.Producto
+                {
+                    IDProducto = IDProducto,
+                    Descripcion = Descripcion,
+                    Costo = Costo,
+                    Impuesto = Impuesto
+                };
 
                 // Esto cierra el form y retorna una respuesta al formulario que lo invocó
                 this.DialogResult = DialogResult.OK;

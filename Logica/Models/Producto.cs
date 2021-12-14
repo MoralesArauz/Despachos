@@ -13,9 +13,9 @@ namespace Logica.Models
         // Atributos de la clase
         public string IDProducto { get; set; }
         public string Descripcion { get; set; }
-        public Decimal Costo { get; set; }
-        public float Impuesto { get; set; }
-        public float Precio { get; set; }
+        public double Costo { get; set; }
+        public double Impuesto { get; set; }
+        public double Precio { get; set; }
         public bool Activo { get; set; }
         public CategoriaProducto MiCategoria { get; set; }
 
@@ -53,8 +53,7 @@ namespace Logica.Models
                     R.IDProducto = Convert.ToString(Fila["IDProducto"]);
                     R.Descripcion = Convert.ToString(Fila["Descripcion"]);
                     R.MiCategoria.IDCategoria = Convert.ToInt32(Fila["IDCategoria"]);
-                    R.Costo = Convert.ToDecimal(Fila["Costo"]);
-                    
+                    R.Costo = Convert.ToDouble(Fila["Costo"]);
                 }
             }
             return R;

@@ -17,7 +17,10 @@ namespace Logica.Models
         public bool Activo { get; set; }
         public Sucursal MiSucursal { get; set; }
 
-
+        public Vendedor()
+        {
+            MiSucursal = new Sucursal();
+        }
 
         // Métodos de la clase
         public bool Agregar()

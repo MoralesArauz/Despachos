@@ -381,16 +381,17 @@ namespace Despachos.Forms
             this.TxtTotal.Name = "TxtTotal";
             this.TxtTotal.Size = new System.Drawing.Size(100, 22);
             this.TxtTotal.TabIndex = 5;
-            this.TxtTotal.Text = "₡0";
+            this.TxtTotal.Text = "0";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(62, 84);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(50, 86);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(31, 13);
+            this.label7.Size = new System.Drawing.Size(58, 16);
             this.label7.TabIndex = 2;
-            this.label7.Text = "Total";
+            this.label7.Text = "Total ₡";
             // 
             // TxtSubtotal
             // 

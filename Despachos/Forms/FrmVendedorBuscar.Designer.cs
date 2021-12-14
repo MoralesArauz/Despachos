@@ -37,6 +37,7 @@ namespace Despachos.Forms
             this.CCedula = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CApellido = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CIDSuc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CSucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.DgvListaVendedores)).BeginInit();
             this.SuspendLayout();
@@ -66,7 +67,7 @@ namespace Despachos.Forms
             this.BtnSeleccionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSeleccionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSeleccionar.ForeColor = System.Drawing.Color.White;
-            this.BtnSeleccionar.Location = new System.Drawing.Point(694, 423);
+            this.BtnSeleccionar.Location = new System.Drawing.Point(793, 421);
             this.BtnSeleccionar.Name = "BtnSeleccionar";
             this.BtnSeleccionar.Size = new System.Drawing.Size(116, 30);
             this.BtnSeleccionar.TabIndex = 2;
@@ -85,6 +86,7 @@ namespace Despachos.Forms
             this.CCedula,
             this.CNombre,
             this.CApellido,
+            this.CIDSuc,
             this.CSucursal});
             this.DgvListaVendedores.Location = new System.Drawing.Point(29, 96);
             this.DgvListaVendedores.MultiSelect = false;
@@ -92,7 +94,7 @@ namespace Despachos.Forms
             this.DgvListaVendedores.ReadOnly = true;
             this.DgvListaVendedores.RowHeadersVisible = false;
             this.DgvListaVendedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DgvListaVendedores.Size = new System.Drawing.Size(778, 304);
+            this.DgvListaVendedores.Size = new System.Drawing.Size(880, 304);
             this.DgvListaVendedores.TabIndex = 3;
             this.DgvListaVendedores.VirtualMode = true;
             // 
@@ -130,6 +132,13 @@ namespace Despachos.Forms
             this.CApellido.ReadOnly = true;
             this.CApellido.Width = 200;
             // 
+            // CIDSuc
+            // 
+            this.CIDSuc.DataPropertyName = "IDSuc";
+            this.CIDSuc.HeaderText = "ID Suc";
+            this.CIDSuc.Name = "CIDSuc";
+            this.CIDSuc.ReadOnly = true;
+            // 
             // CSucursal
             // 
             this.CSucursal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -143,7 +152,7 @@ namespace Despachos.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(833, 479);
+            this.ClientSize = new System.Drawing.Size(941, 486);
             this.Controls.Add(this.DgvListaVendedores);
             this.Controls.Add(this.BtnSeleccionar);
             this.Controls.Add(this.TxtVendedor);
@@ -169,6 +178,7 @@ namespace Despachos.Forms
         private System.Windows.Forms.DataGridViewTextBoxColumn CCedula;
         private System.Windows.Forms.DataGridViewTextBoxColumn CNombre;
         private System.Windows.Forms.DataGridViewTextBoxColumn CApellido;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CIDSuc;
         private System.Windows.Forms.DataGridViewTextBoxColumn CSucursal;
     }
 }

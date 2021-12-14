@@ -18,6 +18,8 @@ namespace Despachos.Commons
 
         public static Forms.FrmFacturaGestion MiFormFactura = new Forms.FrmFacturaGestion();
 
+        public static Forms.FrmConsultaFactura MiConsultaFactura = new Forms.FrmConsultaFactura();
+
 
         // Expresiones regulares para validaciones
 
