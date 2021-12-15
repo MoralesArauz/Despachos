@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -97,6 +98,15 @@ namespace Logica.Models
                 Object consecutivo = MiCnn.DMLConRetornoEscalar("SPFacturaConsecutivo");
                 R = consecutivo.ToString();
             }
+
+            return R;
+        }
+
+        public ReportDocument Imprimir(ReportDocument reporte)
+        {
+            ReportDocument R = reporte;
+
+            Crystal OCrystal = new Crystal();
 
             return R;
         }

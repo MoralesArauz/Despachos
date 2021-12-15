@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Logica.Crypto">
+    <Position X="8" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAEAAAAgAAAAAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>Crypto.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Logica.Models.CategoriaProducto" BaseTypeListCollapsed="true">
+    <Position X="2" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEQAAAAAAACAgAABAAAAAAAAAAQAAAAQAAA=</HashCode>
+      <FileName>Models\CategoriaProducto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Left" Position="0.362" Collapsed="true" />
+  </Class>
+  <Class Name="Logica.Models.Cliente" Collapsed="true">
+    <Position X="3.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEQAAAIEACAAhAIAAAAAAAAgAAAAAAAQCAA=</HashCode>
+      <FileName>Models\Cliente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Logica.Models.Conexion" Collapsed="true">
+    <Position X="5.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAACAAAAAAQAAAAAgCAAAAAAAAAA=</HashCode>
+      <FileName>Models\Conexion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Logica.Models.Despacho" BaseTypeListCollapsed="true">
+    <Position X="2.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAMQAAAAAEACAIAQAAAAAAAAAAAAAAAARAAA=</HashCode>
+      <FileName>Models\Despacho.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Logica.Models.DetalleDespacho" Collapsed="true">
+    <Position X="3.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEIAAAAAEACAAAAAAAAAAAAAAQAAAAAQAAA=</HashCode>
+      <FileName>Models\DetalleDespacho.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Logica.Models.DetalleFactura" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="5.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQABIBACAEgACAAAAQACAAAAAAAQAAAAARAAA=</HashCode>
+      <FileName>Models\DetalleFactura.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Logica.Models.Factura" BaseTypeListCollapsed="true">
+    <Position X="10.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAQAMQgAAEAAACAIAAFAAEAgAAAAQAAAAARAAA=</HashCode>
+      <FileName>Models\Factura.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Logica.Models.PendienteDespacho" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEQABwAAAAAAACAAAAAAAAAAgAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\PendienteDespacho.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Logica.Models.Producto" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEwAAiAAAACAAAARAAAAAAAhAAAgAAAQAAA=</HashCode>
+      <FileName>Models\Producto.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Logica.Models.Rol" BaseTypeListCollapsed="true">
+    <Position X="5.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEQAAAAAAACAgAABAAAAAAAAAAAAAAAQABA=</HashCode>
+      <FileName>Models\Rol.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Logica.Models.Sucursal" BaseTypeListCollapsed="true">
+    <Position X="12.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQABQAAAAAACCAgAAAAAAAAAAAAAAAAAAQAAQ=</HashCode>
+      <FileName>Models\Sucursal.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Orientation="Bottom" Position="0.1" Collapsed="true" />
+  </Class>
+  <Class Name="Logica.Models.TipoDespacho" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEQAAAAAAACAAAABAAAAAAAAAAAAAAAQAAw=</HashCode>
+      <FileName>Models\TipoDespacho.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Logica.Models.Usuario" BaseTypeListCollapsed="true">
+    <Position X="3.75" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAwAEQBEAAAAICAgASAAIAAAAAAAAAAAgAQAAg=</HashCode>
+      <FileName>Models\Usuario.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.69" Collapsed="true" />
+  </Class>
+  <Class Name="Logica.Models.Vendedor" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAEQAAAIEAACAgAAAAAAAACAgAAACAAAQAAA=</HashCode>
+      <FileName>Models\Vendedor.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="1.3" Collapsed="true" />
+  </Class>
+  <Interface Name="Logica.Models.ICrudBase">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAQAAAAAAACAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Models\ICrudBase.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

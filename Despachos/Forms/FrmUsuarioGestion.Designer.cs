@@ -120,6 +120,7 @@ namespace Despachos.Forms
             this.TxtNombre.Name = "TxtNombre";
             this.TxtNombre.Size = new System.Drawing.Size(305, 26);
             this.TxtNombre.TabIndex = 6;
+            this.TxtNombre.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtNombre_KeyPress);
             this.TxtNombre.Leave += new System.EventHandler(this.TxtNombre_Leave);
             // 
             // TxtCorreo

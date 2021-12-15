@@ -19,6 +19,7 @@ namespace Despachos.Forms
         private Controls.CtrlUsuarios padre { get; set; }
         private bool UsuarioNuevo = true;
         private bool CargaInicial = true;
+        private bool contraseniaValida = false;
 
         public FrmUsuarioGestion()
         {
@@ -154,17 +155,48 @@ namespace Despachos.Forms
 
         private void TxtCorreo_Leave(object sender, EventArgs e)
         {
+            //if (!string.IsNullOrEmpty(TxtCorreo.Text.Trim()))
+            //{
+            //    MiUsuarioLocal.Correo = TxtCorreo.Text.Trim();
+            //}
+
+
             if (!string.IsNullOrEmpty(TxtCorreo.Text.Trim()))
             {
-                MiUsuarioLocal.Correo = TxtCorreo.Text.Trim();
+                if (Commons.ObjetosGlobales.ValidarEmail(TxtCorreo.Text.Trim()))
+                {
+                    MiUsuarioLocal.Correo = TxtCorreo.Text.Trim();
+                }
+                else
+                {
+                    MessageBox.Show("El formato del correo no es correcto!!", "Error de validación", MessageBoxButtons.OK);
+                    TxtCorreo.Focus();
+                    TxtCorreo.SelectAll();
+                }
             }
+            else
+            {
+                MiUsuarioLocal.Correo = "";
+            }
+
         }
 
         private void TxtContrasenia_Leave(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(TxtContrasenia.Text.Trim()))
             {
-                MiUsuarioLocal.Contrasenia = TxtContrasenia.Text.Trim();
+
+                if (Commons.ObjetosGlobales.ValidarPassword(TxtContrasenia.Text.Trim()))
+                {
+                    MiUsuarioLocal.Contrasenia = TxtContrasenia.Text.Trim();
+                    contraseniaValida = true;
+                }
+                else
+                {
+                    contraseniaValida = false;
+                    TxtContrasenia.Focus();
+                    TxtContrasenia.SelectAll();
+                }
             }
         }
 
@@ -190,11 +222,13 @@ namespace Despachos.Forms
             {
                 mensajeError += "El campo Nombre es obligatorio.\n";
                 TxtNombre.Focus();
+                return false;
             }
             if (string.IsNullOrEmpty(MiUsuarioLocal.Correo))
             {
                 mensajeError += "El campo Email es obligatorio.\n";
                 TxtCorreo.Focus();
+                return false;
             }
             // La contraseña no se debe validar si estamos en modo edición
             // y no hemos escrito algo en la contraseña
@@ -202,13 +236,15 @@ namespace Despachos.Forms
             {
                 mensajeError += "El campo Contraseña es obligatorio.\n";
                 TxtContrasenia.Focus();
+                return false;
             }
             if (MiUsuarioLocal.MiRol.IDRol <= 0)
             {
                 mensajeError += "Debe escoger un Rol.\n";
+                return false;
             }
 
-            if (string.IsNullOrEmpty(mensajeError))
+            if (string.IsNullOrEmpty(mensajeError) && contraseniaValida)
             {
                 // Si se cumplen los parámetros de validación se pasa el valor de R a true
                 R = true;
@@ -216,7 +252,7 @@ namespace Despachos.Forms
             else
             {
                 //retroalimentar al usuario para indicar qué campo hace falta digitar
-                MessageBox.Show(mensajeError, "Datos Insuficientes", MessageBoxButtons.OK);
+                MessageBox.Show(mensajeError, "Datos Insuficientes o Incorrectos", MessageBoxButtons.OK);
 
             }
 
@@ -284,6 +320,9 @@ namespace Despachos.Forms
             
         }
 
-        
+        private void TxtNombre_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = Commons.ObjetosGlobales.CaracteresTexto(e, true);
+        }
     }
 }
